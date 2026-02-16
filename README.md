@@ -7,7 +7,7 @@ Linuxプリインストールの整備済み中古パソコンをお届けしま
 4GB+ チューニングスクリプト（zram + swap + swappiness 最適化）
 
 ```bash
-curl -sL https://junkumagai.github.io/penguin-computer/setup.sh | sudo bash
+curl -sL https://penguin-computer.github.io/penguin-computer/setup.sh | sudo bash
 ```
 
 ### 設定内容
