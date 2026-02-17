@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サービスメニュー — Penguin Computer</title>
+<meta name="description" content="Penguin Computer のPC修理・クリーニング・Linux化サービス。内部クリーニングからSSD換装、Linux Mintインストールまで。">
+<!-- OGP -->
+<meta property="og:title" content="サービスメニュー — Penguin Computer">
+<meta property="og:description" content="パソコンの内部クリーニング・SSD換装・Linux化で古いPCが蘇る。3つのプランからお選びください。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://penguin-computer.github.io/penguin-computer/menu.html">
+<meta property="og:site_name" content="Penguin Computer">
+<meta property="og:locale" content="ja_JP">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="サービスメニュー — Penguin Computer">
+<meta name="twitter:description" content="パソコンの内部クリーニング・SSD換装・Linux化で古いPCが蘇る。3つのプランからお選びください。">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif; background: #f5f7fa; color: #333; line-height: 1.8; }
+  .container { max-width: 640px; margin: 0 auto; padding: 24px 16px; }
+  h1 { font-size: 1.4em; margin-bottom: 4px; }
+  .brand { color: #2d6a4f; }
+  .tagline { font-size: 0.9em; color: #666; margin-bottom: 24px; }
+  a { color: #2d6a4f; }
+
+  /* お悩みセクション */
+  .troubles { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .troubles h2 { font-size: 1.1em; margin-bottom: 12px; }
+  .trouble-item { display: flex; align-items: flex-start; margin-bottom: 10px; font-size: 0.95em; }
+  .trouble-item .icon { margin-right: 8px; flex-shrink: 0; }
+
+  /* プランカード */
+  .plan { border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .plan h2 { font-size: 1.15em; margin-bottom: 4px; }
+  .plan .subtitle { font-size: 0.85em; color: #666; margin-bottom: 8px; }
+  .plan .price { font-size: 1.3em; font-weight: bold; margin-bottom: 12px; }
+  .plan ul { padding-left: 20px; font-size: 0.92em; margin-bottom: 12px; }
+  .plan li { margin-bottom: 4px; }
+  .plan .target { font-size: 0.85em; color: #555; background: rgba(255,255,255,0.5); border-radius: 8px; padding: 8px 12px; }
+
+  .plan-light { background: #e8f5e9; }
+  .plan-light .price { color: #2d6a4f; }
+  .plan-standard { background: #c8e6c9; }
+  .plan-standard .price { color: #1b5e20; }
+  .plan-revive { background: #a5d6a7; }
+  .plan-revive .price { color: #1b5e20; }
+
+  .popular-badge { display: inline-block; background: #ff6f00; color: #fff; font-size: 0.75em; padding: 2px 8px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
+
+  /* 作業の流れ */
+  .flow { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .flow h2 { font-size: 1.1em; margin-bottom: 12px; }
+  .flow-step { display: flex; align-items: flex-start; margin-bottom: 12px; }
+  .flow-num { display: inline-flex; align-items: center; justify-content: center; background: #2d6a4f; color: #fff; width: 26px; height: 26px; border-radius: 50%; font-size: 0.8em; font-weight: bold; margin-right: 10px; flex-shrink: 0; }
+  .flow-step p { font-size: 0.92em; }
+  .flow-step .sub { font-size: 0.82em; color: #666; }
+
+  /* 注意事項 */
+  .note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 16px; font-size: 0.88em; }
+
+  /* 強み */
+  .strengths { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .strengths h2 { font-size: 1.1em; margin-bottom: 12px; }
+  .strength-item { margin-bottom: 12px; }
+  .strength-item .label { font-weight: bold; font-size: 0.95em; }
+  .strength-item .desc { font-size: 0.88em; color: #555; }
+
+  /* ナビ */
+  .nav { text-align: center; margin-bottom: 20px; font-size: 0.9em; }
+  .nav a { margin: 0 8px; }
+
+  .footer { text-align: center; margin-top: 32px; font-size: 0.8em; color: #999; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="nav">
+  <a href="index.html">セットアップガイド</a> | <a href="menu.html"><strong>サービスメニュー</strong></a>
+</div>
+
+<h1>🐧 <span class="brand">Penguin Computer</span></h1>
+<p class="tagline">パソコン修理・クリーニング・Linux化サービス</p>
+
+<!-- お悩みセクション -->
+<div class="troubles">
+  <h2>こんなお悩みありませんか？</h2>
+  <div class="trouble-item"><span class="icon">🐌</span><span>パソコンの動作が遅くなってきた</span></div>
+  <div class="trouble-item"><span class="icon">🔊</span><span>ファンの音がうるさい、本体が熱い</span></div>
+  <div class="trouble-item"><span class="icon">⚠️</span><span>Windows 10 のサポートが終了してしまう</span></div>
+  <div class="trouble-item"><span class="icon">💸</span><span>新しいPCを買い替えるほどではない…</span></div>
+  <div class="trouble-item"><span class="icon">🤔</span><span>自分で分解するのは不安、壊したくない</span></div>
+</div>
+
+<!-- プラン -->
+<div class="plan plan-light">
+  <h2>ライトプラン</h2>
+  <div class="subtitle">ほこり掃除 + 高速化設定</div>
+  <div class="price">¥5,000〜¥8,000</div>
+  <ul>
+    <li>内部クリーニング（分解・エアブロー・清掃）</li>
+    <li>接点復活剤の塗布（メモリ・コネクタ類）</li>
+    <li>Windows 高速化設定（不要スタートアップ削除・ディスククリーンアップ・視覚効果最適化）</li>
+    <li>簡易動作チェック</li>
+  </ul>
+  <div class="target">
+    <strong>こんな方に:</strong> 「最近ちょっと遅い」「ファンがうるさい」という方。まずはこのプランがおすすめです。
+  </div>
+</div>
+
+<div class="plan plan-standard">
+  <h2>スタンダードプラン <span class="popular-badge">人気</span></h2>
+  <div class="subtitle">SSD換装で生まれ変わる</div>
+  <div class="price">¥15,000〜¥25,000<span style="font-size:0.6em; font-weight:normal;">（パーツ代別途）</span></div>
+  <ul>
+    <li>ライトプランの全内容</li>
+    <li>SSD 換装（起動・アプリ起動が 10〜15 倍高速に）</li>
+    <li>メモリ増設の提案・代行</li>
+    <li>CPUグリス塗替え（冷却性能の回復）</li>
+    <li>最終動作検証</li>
+  </ul>
+  <div class="target">
+    <strong>こんな方に:</strong> 「買い替えは高い、でもサクサク使いたい」という方。最も効果を実感しやすいプランです。
+  </div>
+</div>
+
+<div class="plan plan-revive">
+  <h2>リバイブプラン</h2>
+  <div class="subtitle">古いPCをLinuxで復活</div>
+  <div class="price">¥10,000〜¥20,000</div>
+  <ul>
+    <li>内部クリーニング + CPUグリス塗替え</li>
+    <li>Linux Mint または Ubuntu のインストール</li>
+    <li>zram チューニング（4GB RAM を体感 6〜7GB 相当に）</li>
+    <li>日本語環境の構築</li>
+    <li>Wi-Fi・プリンター設定</li>
+    <li>必要アプリの導入（ブラウザ・LibreOffice など）</li>
+  </ul>
+  <div class="target">
+    <strong>こんな方に:</strong> Windows 10 サポート終了後も古いPCを活用したい方。Windows 11 非対応の端末に最適です。
+  </div>
+</div>
+
+<!-- ペンギンコンピュータの強み -->
+<div class="strengths">
+  <h2>ペンギンコンピュータの強み</h2>
+  <div class="strength-item">
+    <div class="label">🔧 ハード × ソフトの「合わせ技」</div>
+    <div class="desc">クリーニング（ハード面）と高速化設定・OS入替（ソフト面）の両方からアプローチ。片方だけでは得られない満足度を実現します。</div>
+  </div>
+  <div class="strength-item">
+    <div class="label">📊 実測データに基づくチューニング</div>
+    <div class="desc">Dell OptiPlex 3050 SFF、HP ProDesk 400 G1 などで12パターンのベンチマーク検証済み。感覚ではなく数値で効果を実証します。</div>
+  </div>
+  <div class="strength-item">
+    <div class="label">🐧 Linux のプロフェッショナル</div>
+    <div class="desc">Linux Mint + zram チューニングにより、メモリ 4GB のPCでも快適な動作環境を構築。追加ハードウェア費用なしで高速化します。</div>
+  </div>
+  <div class="strength-item">
+    <div class="label">💬 正直なご提案</div>
+    <div class="desc">「この端末には Linux は合わない」と判断した場合は正直にお伝えします。お客様の用途に合った最善の選択肢をご提案します。</div>
+  </div>
+</div>
+
+<!-- 作業の流れ -->
+<div class="flow">
+  <h2>ご利用の流れ</h2>
+  <div class="flow-step">
+    <span class="flow-num">1</span>
+    <div><p><strong>お問い合わせ</strong></p><p class="sub">メルカリまたはメールでお気軽にご連絡ください。</p></div>
+  </div>
+  <div class="flow-step">
+    <span class="flow-num">2</span>
+    <div><p><strong>ヒアリング・お見積もり</strong></p><p class="sub">症状・ご希望をお伺いし、最適なプランとお見積もりをご提案します。</p></div>
+  </div>
+  <div class="flow-step">
+    <span class="flow-num">3</span>
+    <div><p><strong>PCをお送りいただく</strong></p><p class="sub">梱包方法もご案内します。送料はお客様ご負担となります。</p></div>
+  </div>
+  <div class="flow-step">
+    <span class="flow-num">4</span>
+    <div><p><strong>作業（3〜5営業日）</strong></p><p class="sub">作業完了後、ビフォー・アフターの写真とともにご報告します。</p></div>
+  </div>
+  <div class="flow-step">
+    <span class="flow-num">5</span>
+    <div><p><strong>返送・お受け取り</strong></p><p class="sub">返送料はサービス料金に含まれます。</p></div>
+  </div>
+</div>
+
+<div class="note">
+  <strong>ご注意</strong><br>
+  ・ パーツ代（SSD・メモリ等）は別途実費をいただきます。事前にお見積もりをお出しします。<br>
+  ・ リバイブプラン（Linux化）では、Windows 専用ソフト（Microsoft Office、Adobe 製品等）は動作しません。事前に「できること・できないこと」をご説明します。<br>
+  ・ 修理不能と判断した場合は、作業費はいただきません。
+</div>
+
+<!-- フッター -->
+<div class="footer">
+  <p><strong>Penguin Computer</strong> — Linuxプリインストールの整備済み中古パソコン</p>
+  <p style="margin-top:8px;">📧 <a href="mailto:penguin.computer.2026@gmail.com">penguin.computer.2026@gmail.com</a></p>
+  <p style="margin-top:8px;">🛒 <a href="https://jp.mercari.com/user/profile/544508417" target="_blank" rel="noopener">メルカリで商品を見る</a></p>
+</div>
+
+</div>
+</body>
+</html>
