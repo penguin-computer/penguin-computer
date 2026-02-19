@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Penguin Computer セットアップ</title>
+<meta name="description" content="Penguin Computer — Linuxプリインストールの整備済み中古パソコン。4GB RAMを体感6〜7GB相当にするzramチューニングガイド。">
+<!-- OGP -->
+<meta property="og:title" content="Penguin Computer セットアップガイド">
+<meta property="og:description" content="Linux Mint Xfce + zramチューニングで古いPCが蘇る。4GB RAMが体感6〜7GB相当に。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://penguin-computer.github.io/penguin-computer/setup.html">
+<meta property="og:site_name" content="Penguin Computer">
+<meta property="og:locale" content="ja_JP">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Penguin Computer セットアップガイド">
+<meta name="twitter:description" content="Linux Mint Xfce + zramチューニングで古いPCが蘇る。4GB RAMが体感6〜7GB相当に。">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif; background: #f5f7fa; color: #333; line-height: 1.8; }
+  .container { max-width: 640px; margin: 0 auto; padding: 24px 16px; }
+  h1 { font-size: 1.4em; margin-bottom: 8px; }
+  .brand { color: #2d6a4f; }
+  .tagline { font-size: 0.9em; color: #666; margin-bottom: 24px; }
+  .step { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .step-num { display: inline-block; background: #2d6a4f; color: #fff; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-size: 0.85em; font-weight: bold; margin-right: 8px; }
+  .step h2 { display: inline; font-size: 1.1em; }
+  .step p { margin-top: 8px; font-size: 0.95em; }
+  .cmd { background: #1e1e1e; color: #d4d4d4; padding: 14px 16px; border-radius: 8px; margin-top: 12px; font-family: 'Courier New', monospace; font-size: 0.9em; overflow-x: auto; position: relative; word-break: break-all; }
+  .cmd .copy-btn { position: absolute; top: 8px; right: 8px; background: #2d6a4f; color: #fff; border: none; border-radius: 6px; padding: 4px 12px; font-size: 0.8em; cursor: pointer; }
+  .cmd .copy-btn:active { background: #40916c; }
+  .note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 16px; font-size: 0.9em; }
+  .footer { text-align: center; margin-top: 32px; font-size: 0.8em; color: #999; }
+  a { color: #2d6a4f; }
+  .nav { text-align: center; margin-bottom: 20px; font-size: 0.9em; }
+  .nav a { margin: 0 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="nav">
+  <a href="index.html">Penguin Computer</a> | <a href="setup.html"><strong>セットアップガイド</strong></a> | <a href="menu.html">サービスメニュー</a>
+</div>
+
+<h1>🐧 <span class="brand">Penguin Computer</span> セットアップガイド</h1>
+<p class="tagline">Linux Mint Xfce + 4GB+ チューニング</p>
+
+<div class="step">
+  <span class="step-num">1</span><h2>ターミナルを開く</h2>
+  <p>デスクトップ左下のメニュー → 「端末」（ターミナル）をクリック。<br>
+  または <strong>Ctrl + Alt + T</strong> キーで開きます。</p>
+</div>
+
+<div class="step">
+  <span class="step-num">2</span><h2>Wi-Fi に接続</h2>
+  <p>画面右下のネットワークアイコンから Wi-Fi に接続してください。<br>
+  有線LANの場合はこのステップは不要です。</p>
+</div>
+
+<div class="step">
+  <span class="step-num">3</span><h2>セットアップコマンドを実行</h2>
+  <p>以下のコマンドをターミナルにコピー＆ペーストして Enter を押してください。<br>
+  パスワードを聞かれたら、Linux Mint インストール時に設定したパスワードを入力します。</p>
+  <div class="cmd">
+    <button class="copy-btn" onclick="copyCmd()">コピー</button>
+    <code id="setup-cmd">curl -sL https://penguin-computer.github.io/penguin-computer/setup.sh | sudo bash</code>
+  </div>
+</div>
+
+<div class="step">
+  <span class="step-num">4</span><h2>完了！</h2>
+  <p>「セットアップ完了」と表示されたら終了です。<br>
+  再起動後も設定は維持されます。</p>
+  <p><strong>設定内容:</strong></p>
+  <ul style="margin-top:8px; padding-left:20px; font-size:0.95em;">
+    <li>zram（メモリ圧縮）の有効化</li>
+    <li>4GB スワップファイルの作成</li>
+    <li>swappiness の最適化（値: 15）</li>
+  </ul>
+</div>
+
+<div class="note">
+  <strong>💡 このチューニングの効果</strong><br>
+  4GB の RAM が体感 6〜7GB 相当に。LibreOffice の起動が最大 64% 高速化。<br>
+  追加のハードウェア購入は不要です。
+</div>
+
+<div class="footer">
+  <p><strong>Penguin Computer</strong> — Linuxプリインストールの整備済み中古パソコン</p>
+  <p style="margin-top:8px;"><a href="mailto:penguin.computer.2026@gmail.com">penguin.computer.2026@gmail.com</a></p>
+  <p><a href="https://x.com/penguin_comp" target="_blank" rel="noopener">X @penguin_comp</a></p>
+  <p><a href="https://jp.mercari.com/user/profile/544508417" target="_blank" rel="noopener">メルカリストア</a></p>
+</div>
+
+</div>
+
+<script>
+function copyCmd() {
+  const cmd = document.getElementById('setup-cmd').textContent;
+  navigator.clipboard.writeText(cmd).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'コピー済み✓';
+    setTimeout(() => { btn.textContent = 'コピー'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>
