@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>セットアップガイド — Penguin Computer</title>
-<meta name="description" content="Linux PCのzramチューニングガイド。4GB RAMを体感6〜7GB相当に。Ubuntu、Linux Mint、その他Debian系ディストリビューションで利用可能。">
+<meta name="description" content="Linux Mint Xfce インストールUSBメディアのセットアップガイド。USBからの起動方法、インストール手順、zramチューニングまで丁寧に解説。">
 <!-- OGP -->
 <meta property="og:title" content="セットアップガイド — Penguin Computer">
-<meta property="og:description" content="Linux PCのzramチューニングガイド。4GB RAMが体感6〜7GB相当に。Debian系ディストリビューション対応。">
+<meta property="og:description" content="Linux Mint Xfce インストールUSBメディアのセットアップガイド。USBからの起動方法からzramチューニングまで。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://penguin-computer.github.io/penguin-computer/setup.html">
 <meta property="og:site_name" content="Penguin Computer">
@@ -16,32 +16,43 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@penguin_comp">
 <meta name="twitter:title" content="セットアップガイド — Penguin Computer">
-<meta name="twitter:description" content="Linux PCのzramチューニングガイド。4GB RAMが体感6〜7GB相当に。Debian系ディストリビューション対応。">
+<meta name="twitter:description" content="Linux Mint Xfce インストールUSBメディアのセットアップガイド。USBからの起動方法からzramチューニングまで。">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif; background: #f5f7fa; color: #333; line-height: 1.8; }
-  .container { max-width: 640px; margin: 0 auto; padding: 24px 16px; }
+  .container { max-width: 700px; margin: 0 auto; padding: 24px 16px; }
   h1 { font-size: 1.4em; margin-bottom: 8px; }
+  h2 { font-size: 1.15em; margin-bottom: 8px; }
+  h3 { font-size: 1.05em; margin-bottom: 6px; color: #2d6a4f; }
   .brand { color: #2d6a4f; }
   .tagline { font-size: 0.9em; color: #666; margin-bottom: 24px; }
   a { color: #2d6a4f; }
   .nav { text-align: center; margin-bottom: 20px; font-size: 0.9em; }
   .nav a { margin: 0 8px; }
-  .intro { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-  .intro p { font-size: 0.95em; margin-bottom: 8px; }
-  .intro p:last-child { margin-bottom: 0; }
-  .intro ul { padding-left: 20px; font-size: 0.92em; margin-bottom: 8px; }
-  .intro li { margin-bottom: 4px; }
-  .step { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .toc { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .toc h2 { color: #2d6a4f; margin-bottom: 12px; }
+  .toc ol { padding-left: 24px; }
+  .toc li { margin-bottom: 6px; font-size: 0.95em; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .section { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .section p { margin-top: 8px; font-size: 0.95em; }
+  .section ul, .section ol { padding-left: 24px; margin-top: 8px; font-size: 0.95em; }
+  .section li { margin-bottom: 6px; }
   .step-num { display: inline-block; background: #2d6a4f; color: #fff; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-size: 0.85em; font-weight: bold; margin-right: 8px; }
-  .step h2 { display: inline; font-size: 1.1em; }
-  .step p { margin-top: 8px; font-size: 0.95em; }
+  .maker { background: #f8f9fa; border-radius: 8px; padding: 16px; margin-top: 12px; margin-bottom: 12px; border-left: 4px solid #2d6a4f; }
+  .maker h3 { margin-bottom: 4px; }
+  .maker p { font-size: 0.93em; margin-top: 4px; }
+  .maker ol { padding-left: 24px; font-size: 0.93em; margin-top: 8px; }
+  .maker li { margin-bottom: 4px; }
+  .key { display: inline-block; background: #333; color: #fff; padding: 2px 10px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.9em; font-weight: bold; }
+  .warn { background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 16px; font-size: 0.9em; }
+  .tip { background: #e8f5e9; border-left: 4px solid #2d6a4f; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 16px; font-size: 0.9em; }
   .cmd { background: #1e1e1e; color: #d4d4d4; padding: 14px 16px; border-radius: 8px; margin-top: 12px; font-family: 'Courier New', monospace; font-size: 0.9em; overflow-x: auto; position: relative; word-break: break-all; }
   .cmd .copy-btn { position: absolute; top: 8px; right: 8px; background: #2d6a4f; color: #fff; border: none; border-radius: 6px; padding: 4px 12px; font-size: 0.8em; cursor: pointer; }
   .cmd .copy-btn:active { background: #40916c; }
-  .note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 16px; font-size: 0.9em; }
-  .compat { background: #e8f5e9; border-left: 4px solid #2d6a4f; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 16px; margin-bottom: 16px; font-size: 0.9em; }
   .footer { text-align: center; margin-top: 32px; font-size: 0.8em; color: #999; }
+  .divider { border: none; border-top: 1px solid #e0e0e0; margin: 24px 0; }
 </style>
 </head>
 <body>
@@ -52,70 +63,397 @@
 </div>
 
 <h1>🐧 <span class="brand">Penguin Computer</span> セットアップガイド</h1>
-<p class="tagline">zram チューニングで古いPCのメモリ不足を解消</p>
+<p class="tagline">Linux Mint Xfce インストール USB メディア — はじめてでも大丈夫</p>
 
-<!-- このページについて -->
-<div class="intro">
-  <h2 style="font-size:1.1em; color:#2d6a4f; margin-bottom:8px;">このページについて</h2>
-  <p>このセットアップガイドは、Penguin Computer の <strong>Linux インストール USB メディア</strong>に同梱しているガイドカードの QR コードからアクセスするページです。</p>
-  <p>以下のスクリプトは <strong>zram（メモリ圧縮）</strong>を有効化し、メモリ 4GB のPCでも快適に動作するようチューニングします。</p>
-  <p style="margin-top:12px;"><strong>対応OS:</strong></p>
+<!-- 目次 -->
+<div class="toc">
+  <h2>もくじ</h2>
+  <ol>
+    <li><a href="#boot">USB メモリからパソコンを起動する</a></li>
+    <li><a href="#install">Linux Mint Xfce をインストールする</a></li>
+    <li><a href="#zram">zram チューニングで高速化する</a></li>
+    <li><a href="#trouble">困ったときは</a></li>
+  </ol>
+</div>
+
+<!-- ========================================== -->
+<!-- パート1: USBブート -->
+<!-- ========================================== -->
+<div class="section" id="boot">
+  <h2>1. USB メモリからパソコンを起動する</h2>
+  <p>Linux Mint をインストールするには、まず USB メモリからパソコンを起動する必要があります。<br>
+  ふだんパソコンの電源を入れると Windows が起動しますが、ここでは Windows の代わりに USB メモリから起動させます。</p>
+  <p>方法は大きく2つあります。お使いのパソコンに合った方法をお試しください。</p>
+</div>
+
+<!-- 方法A: 起動メニュー -->
+<div class="section">
+  <h3>方法 A: 起動メニューを使う（かんたん・おすすめ）</h3>
+  <p>パソコンの電源を入れた直後に特定のキーを押すと、「どこから起動するか」を選ぶメニューが表示されます。ここで USB メモリを選ぶだけです。</p>
+
+  <p><strong>手順:</strong></p>
+  <ol>
+    <li>USB メモリをパソコンに差し込みます</li>
+    <li>パソコンの電源を入れます（すでに起動している場合は「再起動」します）</li>
+    <li>画面に何か表示されたら、すぐに下の表にあるキーを <strong>連打</strong> してください（1回ではなく、トントントンと何回も押します）</li>
+    <li>起動メニューが表示されたら、<strong>USB</strong> と書かれた項目を矢印キー（↑↓）で選び、<strong>Enter</strong> キーを押します</li>
+  </ol>
+
+  <div class="tip">
+    <strong>🐧 ポイント</strong><br>
+    USB の項目は「USB HDD」「USB Flash Drive」「UEFI: KIOXIA」「USB Storage Device」など、メーカーによって表示が異なります。<strong>「USB」という文字が含まれているもの</strong>を選んでください。
+  </div>
+
+  <p style="margin-top:16px;"><strong>メーカー別 起動メニューキー一覧:</strong></p>
+
+  <!-- Dell -->
+  <div class="maker">
+    <h3>Dell（デル）</h3>
+    <p>起動メニューキー: <span class="key">F12</span></p>
+    <ol>
+      <li>パソコンの電源を入れたら、Dell のロゴが出る前から <span class="key">F12</span> を連打します</li>
+      <li>「Boot Menu」または「起動メニュー」と書かれた画面が表示されます</li>
+      <li>一覧から「USB Storage Device」または「UEFI: KIOXIA〜」と書かれた項目を矢印キーで選びます</li>
+      <li><span class="key">Enter</span> を押すと USB メモリから起動します</li>
+    </ol>
+    <p>※ OptiPlex、Inspiron、Latitude、Vostro すべて共通です</p>
+  </div>
+
+  <!-- HP -->
+  <div class="maker">
+    <h3>HP（ヒューレット・パッカード）</h3>
+    <p>起動メニューキー: <span class="key">F9</span></p>
+    <ol>
+      <li>パソコンの電源を入れたら、HP のロゴが出る前から <span class="key">F9</span> を連打します</li>
+      <li>「Boot Device Options」または「起動デバイスオプション」と書かれた画面が表示されます</li>
+      <li>一覧から「USB Flash Drive」または「UEFI: KIOXIA〜」と書かれた項目を選びます</li>
+      <li><span class="key">Enter</span> を押すと USB メモリから起動します</li>
+    </ol>
+    <p>※ ProDesk、EliteDesk、ProBook、EliteBook すべて共通です</p>
+  </div>
+
+  <!-- Lenovo -->
+  <div class="maker">
+    <h3>Lenovo（レノボ）</h3>
+    <p>起動メニューキー: <span class="key">F12</span></p>
+    <ol>
+      <li>パソコンの電源を入れたら、Lenovo のロゴが出る前から <span class="key">F12</span> を連打します</li>
+      <li>「Boot Menu」と書かれた画面が表示されます</li>
+      <li>一覧から「USB HDD」または「UEFI: KIOXIA〜」と書かれた項目を選びます</li>
+      <li><span class="key">Enter</span> を押すと USB メモリから起動します</li>
+    </ol>
+    <p>※ ThinkPad、ThinkCentre、IdeaPad すべて共通です</p>
+  </div>
+
+  <!-- 富士通 -->
+  <div class="maker">
+    <h3>富士通（FUJITSU）</h3>
+    <p>起動メニューキー: <span class="key">F12</span></p>
+    <ol>
+      <li>パソコンの電源を入れたら、FUJITSU のロゴが出る前から <span class="key">F12</span> を連打します</li>
+      <li>「起動メニュー」と書かれた画面が表示されます</li>
+      <li>一覧から「USB」と書かれた項目を選びます</li>
+      <li><span class="key">Enter</span> を押すと USB メモリから起動します</li>
+    </ol>
+    <p>※ LIFEBOOK、ESPRIMO すべて共通です</p>
+  </div>
+
+  <!-- NEC -->
+  <div class="maker">
+    <h3>NEC</h3>
+    <p>起動メニューキー: <span class="key">F12</span></p>
+    <ol>
+      <li>パソコンの電源を入れたら、NEC のロゴが出る前から <span class="key">F12</span> を連打します</li>
+      <li>「起動デバイスの選択」と書かれた画面が表示されます</li>
+      <li>一覧から「USB」と書かれた項目を選びます</li>
+      <li><span class="key">Enter</span> を押すと USB メモリから起動します</li>
+    </ol>
+    <p>※ LAVIE、Mate、VersaPro すべて共通です</p>
+  </div>
+
+  <!-- 東芝/dynabook -->
+  <div class="maker">
+    <h3>東芝 / dynabook（ダイナブック）</h3>
+    <p>起動メニューキー: <span class="key">F12</span></p>
+    <ol>
+      <li>パソコンの電源を入れたら、dynabook（または TOSHIBA）のロゴが出る前から <span class="key">F12</span> を連打します</li>
+      <li>「起動デバイスの選択」と書かれた画面が表示されます</li>
+      <li>一覧から「USB」と書かれた項目を選びます</li>
+      <li><span class="key">Enter</span> を押すと USB メモリから起動します</li>
+    </ol>
+  </div>
+
+  <!-- ASUS -->
+  <div class="maker">
+    <h3>ASUS（エイスース）</h3>
+    <p>起動メニューキー: <span class="key">F8</span> または <span class="key">Esc</span></p>
+    <ol>
+      <li>パソコンの電源を入れたら、ASUS のロゴが出る前から <span class="key">F8</span>（または <span class="key">Esc</span>）を連打します</li>
+      <li>「Boot Device Selection」と書かれた画面が表示されます</li>
+      <li>一覧から「USB」または「UEFI: KIOXIA〜」と書かれた項目を選びます</li>
+      <li><span class="key">Enter</span> を押すと USB メモリから起動します</li>
+    </ol>
+  </div>
+
+  <!-- Acer -->
+  <div class="maker">
+    <h3>Acer（エイサー）</h3>
+    <p>起動メニューキー: <span class="key">F12</span></p>
+    <ol>
+      <li>パソコンの電源を入れたら、Acer のロゴが出る前から <span class="key">F12</span> を連打します</li>
+      <li>「Boot Menu」と書かれた画面が表示されます</li>
+      <li>一覧から「USB HDD」または「UEFI: KIOXIA〜」と書かれた項目を選びます</li>
+      <li><span class="key">Enter</span> を押すと USB メモリから起動します</li>
+    </ol>
+  </div>
+
+  <!-- パナソニック -->
+  <div class="maker">
+    <h3>Panasonic / Let's note（パナソニック / レッツノート）</h3>
+    <p>起動メニューキー: <span class="key">F2</span> → 起動タブで順序変更</p>
+    <ol>
+      <li>パソコンの電源を入れたら、Panasonic のロゴが出る前から <span class="key">F2</span> を連打します</li>
+      <li>BIOS 設定画面が開いたら、矢印キーで「起動」または「Boot」タブに移動します</li>
+      <li>「USB」の項目を一番上に移動します（<span class="key">F6</span> で上に移動できる機種が多いです）</li>
+      <li><span class="key">F10</span> を押して「はい」を選ぶと設定が保存され、USB メモリから起動します</li>
+    </ol>
+    <p>※ Let's note は起動メニュー（F12）に対応していない機種が多いため、BIOS 設定から起動順序を変更します</p>
+  </div>
+
+  <div class="warn">
+    <strong>⚡ 起動メニューが出ないとき</strong><br>
+    キーを押すタイミングが遅いと Windows が通常起動してしまいます。<br>
+    電源を入れ直して、もう少し早いタイミングで連打してみてください。<br>
+    ロゴが表示される前から押し始めるのがコツです。
+  </div>
+</div>
+
+<!-- 方法B: BIOS設定 -->
+<div class="section">
+  <h3>方法 B: BIOS 設定で起動順序を変更する</h3>
+  <p>方法 A の起動メニューがうまく表示されない場合は、BIOS（バイオス）の設定画面から起動順序を変更します。</p>
+
+  <p><strong>BIOS 設定画面を開くキー:</strong></p>
+
+  <div class="maker">
+    <h3>メーカー別 BIOS 設定キー</h3>
+    <p>
+      Dell: <span class="key">F2</span> ／
+      HP: <span class="key">F10</span> ／
+      Lenovo: <span class="key">F1</span> または <span class="key">F2</span> ／
+      富士通: <span class="key">F2</span> ／
+      NEC: <span class="key">F2</span> ／
+      東芝/dynabook: <span class="key">F2</span> ／
+      ASUS: <span class="key">Del</span> または <span class="key">F2</span> ／
+      Acer: <span class="key">F2</span> ／
+      Panasonic: <span class="key">F2</span>
+    </p>
+  </div>
+
+  <p><strong>BIOS 設定画面での操作手順:</strong></p>
+  <ol>
+    <li>USB メモリをパソコンに差し込みます</li>
+    <li>パソコンの電源を入れたら、上の表にあるキーを連打します</li>
+    <li>BIOS 設定画面が表示されます（青い画面や灰色の画面が多いです）</li>
+    <li>矢印キー（←→）で <strong>「Boot」「起動」</strong> と書かれたタブに移動します</li>
+    <li><strong>「Boot Priority」「起動順序」</strong> という項目を見つけます</li>
+    <li>「USB」と書かれた項目を一番上に移動します<br>
+    （移動方法は画面の下や右側に説明が書いてあります。<span class="key">F6</span>/<span class="key">F5</span> や <span class="key">+</span>/<span class="key">-</span> で上下する機種が多いです）</li>
+    <li><span class="key">F10</span> を押すと「設定を保存して終了しますか？」と聞かれるので、「Yes」を選んで <span class="key">Enter</span> を押します</li>
+    <li>パソコンが再起動し、USB メモリから Linux Mint が起動します</li>
+  </ol>
+
+  <div class="tip">
+    <strong>🐧 インストール後は元に戻してください</strong><br>
+    Linux Mint のインストールが完了したら、同じ手順で BIOS 設定を開き、起動順序を元に戻しておくと安心です（「HDD」や「SSD」を一番上に）。戻さなくても USB メモリを抜いておけば通常通り起動します。
+  </div>
+
+  <div class="warn">
+    <strong>⚡ 「Secure Boot」が有効になっている場合</strong><br>
+    一部のパソコンでは「Secure Boot」（セキュアブート）が有効になっていると、USB メモリから起動できないことがあります。<br>
+    BIOS 設定画面で「Security」や「Boot」タブの中にある <strong>「Secure Boot」を「Disabled」（無効）</strong>に変更してから、もう一度お試しください。
+  </div>
+</div>
+
+<!-- お使いの機種がわからないとき -->
+<div class="section">
+  <h3>お使いの機種のキーがわからないとき</h3>
+  <p>上の一覧にないメーカーや、キーを押しても反応しない場合は、次の方法をお試しください。</p>
+  <ol>
+    <li><strong>YouTube</strong> で「（お使いの機種名） BIOS USB ブート」と検索すると、動画で手順を見ることができます</li>
+    <li><strong>ChatGPT などの AI</strong> に「（お使いの機種名）で USB メモリから起動する方法を教えてください」と聞くと、具体的な手順を教えてくれます</li>
+    <li>パソコンの電源を入れた直後に画面の隅に「Press F12 for Boot Menu」などと一瞬表示されることがあります。その表示されたキーを押してください</li>
+  </ol>
+</div>
+
+<hr class="divider">
+
+<!-- ========================================== -->
+<!-- パート2: インストール -->
+<!-- ========================================== -->
+<div class="section" id="install">
+  <h2>2. Linux Mint Xfce をインストールする</h2>
+  <p>USB メモリからパソコンが起動すると、Linux Mint のデスクトップ画面が表示されます。<br>
+  この時点ではまだインストールされていません。まず試しに使ってみることもできます。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">1</span><h2>「Install Linux Mint」をダブルクリック</h2>
+  <p>デスクトップ上にある <strong>「Install Linux Mint」</strong> というアイコンをダブルクリックします。<br>
+  インストーラーが起動します。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">2</span><h2>言語の選択</h2>
+  <p>左の一覧から <strong>「日本語」</strong> を選んで「続ける」をクリックします。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">3</span><h2>キーボードの選択</h2>
+  <p><strong>「日本語」</strong> が選ばれていることを確認して「続ける」をクリックします。<br>
+  英語キーボードの場合は「English (US)」を選びます。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">4</span><h2>マルチメディアコーデック</h2>
+  <p>「マルチメディアコーデックをインストールする」に <strong>チェックを入れて</strong>「続ける」をクリックします。<br>
+  これを入れると、動画や音楽ファイルを再生できるようになります。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">5</span><h2>インストールの種類</h2>
+  <p><strong>「ディスクを削除して Linux Mint をインストール」</strong> を選んで「インストール」をクリックします。</p>
+  <div class="warn">
+    <strong>⚡ 重要</strong><br>
+    この操作により、パソコン内の Windows やすべてのデータが削除されます。<br>
+    必要なデータは事前にバックアップしてください。
+  </div>
+</div>
+
+<div class="section">
+  <span class="step-num">6</span><h2>タイムゾーンの選択</h2>
+  <p>地図上で <strong>「Tokyo」</strong> が選ばれていることを確認して「続ける」をクリックします。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">7</span><h2>ユーザー情報の入力</h2>
+  <p>以下を入力して「続ける」をクリックします。</p>
   <ul>
-    <li>Linux Mint（全エディション）</li>
-    <li>Ubuntu / Xubuntu / Lubuntu</li>
-    <li>その他 Debian 系ディストリビューション</li>
+    <li><strong>あなたの名前</strong>: お好きな名前（日本語でも OK）</li>
+    <li><strong>コンピューターの名前</strong>: 自動で入力されます（そのままで OK）</li>
+    <li><strong>ユーザー名</strong>: 半角英数字で入力します（例: taro）</li>
+    <li><strong>パスワード</strong>: 忘れないものを設定してください（このパスワードは後で使います）</li>
   </ul>
-  <p>USB メディアを購入されていない方も、お手持ちの Linux PC でご利用いただけます。</p>
 </div>
 
-<div class="step">
-  <span class="step-num">1</span><h2>ターミナルを開く</h2>
-  <p>デスクトップ左下のメニュー → 「端末」（ターミナル）をクリック。<br>
-  または <strong>Ctrl + Alt + T</strong> キーで開きます。</p>
+<div class="section">
+  <span class="step-num">8</span><h2>インストール完了</h2>
+  <p>インストールが始まります（10〜30分程度かかります）。<br>
+  「インストールが完了しました」と表示されたら <strong>「今すぐ再起動する」</strong> をクリックします。<br>
+  画面に「USB メモリを抜いて Enter を押してください」と表示されたら、USB メモリを抜いて <span class="key">Enter</span> を押します。</p>
+
+  <div class="tip">
+    <strong>🐧 おめでとうございます！</strong><br>
+    再起動すると Linux Mint Xfce のログイン画面が表示されます。<br>
+    先ほど設定したパスワードでログインしてください。<br>
+    次は Wi-Fi の接続と zram チューニングに進みましょう。
+  </div>
 </div>
 
-<div class="step">
-  <span class="step-num">2</span><h2>Wi-Fi に接続</h2>
-  <p>画面右下のネットワークアイコンから Wi-Fi に接続してください。<br>
-  有線LANの場合はこのステップは不要です。</p>
+<hr class="divider">
+
+<!-- ========================================== -->
+<!-- パート3: zramチューニング -->
+<!-- ========================================== -->
+<div class="section" id="zram">
+  <h2>3. zram チューニングで高速化する</h2>
+  <p>メモリ 4GB のパソコンでも体感 6〜7GB 相当で快適に動作するようにチューニングします。<br>
+  ガイドカードの QR コードからこのページを開いている方は、ここからスタートしてください。</p>
 </div>
 
-<div class="step">
-  <span class="step-num">3</span><h2>セットアップコマンドを実行</h2>
-  <p>以下のコマンドをターミナルにコピー＆ペーストして Enter を押してください。<br>
-  パスワードを聞かれたら、Linux インストール時に設定したパスワードを入力します。</p>
+<div class="section">
+  <span class="step-num">1</span><h2>Wi-Fi に接続する</h2>
+  <p>画面右下のネットワークアイコン（扇形のマーク）をクリックして、Wi-Fi に接続してください。<br>
+  有線 LAN ケーブルで接続している場合はこのステップは不要です。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">2</span><h2>ターミナルを開く</h2>
+  <p>画面左下のメニュー → 「システム」 → 「ターミナル」（黒い画面のアイコン）をクリックします。<br>
+  または、キーボードで <span class="key">Ctrl</span> + <span class="key">Alt</span> + <span class="key">T</span> を同時に押すと開きます。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">3</span><h2>セットアップコマンドを実行する</h2>
+  <p>以下のコマンドをコピーして、ターミナルに貼り付けて <span class="key">Enter</span> を押してください。</p>
   <div class="cmd">
     <button class="copy-btn" onclick="copyCmd()">コピー</button>
     <code id="setup-cmd">curl -sL https://penguin-computer.github.io/penguin-computer/setup.sh | sudo bash</code>
   </div>
+  <p style="margin-top:12px;">パスワードを聞かれたら、インストール時に設定したパスワードを入力します。<br>
+  （入力中は画面に何も表示されませんが、入力されています。そのまま <span class="key">Enter</span> を押してください）</p>
 </div>
 
-<div class="step">
+<div class="section">
   <span class="step-num">4</span><h2>完了！</h2>
-  <p>「セットアップ完了」と表示されたら終了です。<br>
-  再起動後も設定は維持されます。</p>
+  <p>「セットアップ完了」と表示されたら終了です。再起動後も設定は維持されます。</p>
   <p><strong>設定内容:</strong></p>
-  <ul style="margin-top:8px; padding-left:20px; font-size:0.95em;">
+  <ul>
     <li>zram（メモリ圧縮）の有効化</li>
     <li>4GB スワップファイルの作成</li>
     <li>swappiness の最適化（値: 15）</li>
   </ul>
+
+  <div class="tip">
+    <strong>🐧 このチューニングの効果</strong><br>
+    メモリ 4GB のパソコンが体感 6〜7GB 相当に。LibreOffice の起動が最大 64% 高速化。<br>
+    追加のハードウェア購入は不要です。
+  </div>
 </div>
 
-<div class="note">
-  <strong>💡 このチューニングの効果</strong><br>
-  4GB の RAM が体感 6〜7GB 相当に。LibreOffice の起動が最大 64% 高速化。<br>
-  追加のハードウェア購入は不要です。
-</div>
-
-<div class="compat">
+<div class="section" style="background: #e8f5e9;">
   <strong>🐧 スクリプトについて</strong><br>
   このスクリプトは Penguin Computer がオープンに公開しています。<br>
-  Debian 系 Linux であればどなたでもご利用いただけます。
+  Linux Mint のほか、Ubuntu、Xubuntu、Lubuntu、その他 Debian 系 Linux でもご利用いただけます。<br>
+  USB メディアを購入されていない方もお気軽にどうぞ。
 </div>
 
+<hr class="divider">
+
+<!-- ========================================== -->
+<!-- パート4: 困ったときは -->
+<!-- ========================================== -->
+<div class="section" id="trouble">
+  <h2>4. 困ったときは</h2>
+
+  <h3>USB メモリから起動できない</h3>
+  <ul>
+    <li>起動メニューキーを押すタイミングが遅い → 電源を入れ直して、もっと早く連打してください</li>
+    <li>USB メモリが認識されない → 別の USB ポートに差し替えてみてください（USB 2.0 のポートがある場合はそちらを試してください）</li>
+    <li>Secure Boot が有効 → BIOS 設定で「Secure Boot」を「Disabled」に変更してください</li>
+    <li>UEFI / Legacy の設定 → BIOS 設定で「UEFI」モードになっていることを確認してください。「Legacy」や「CSM」モードでは起動できない場合があります</li>
+  </ul>
+
+  <h3 style="margin-top:16px;">Wi-Fi が見つからない</h3>
+  <ul>
+    <li>一部のノートパソコンでは、Wi-Fi が自動で認識されないことがあります</li>
+    <li>その場合は有線 LAN ケーブルでインターネットに接続してから、システムアップデートを実行すると Wi-Fi が使えるようになることがあります</li>
+  </ul>
+
+  <h3 style="margin-top:16px;">画面の表示がおかしい</h3>
+  <ul>
+    <li>画面が大きすぎる・小さすぎる場合: メニュー → 設定 → ディスプレイ で解像度を変更できます</li>
+    <li>画面がちらつく場合: 「ドライバーマネージャー」から推奨ドライバーをインストールしてください</li>
+  </ul>
+
+  <h3 style="margin-top:16px;">上記で解決しない場合</h3>
+  <p>メールでサポートいたします。お気軽にご連絡ください。</p>
+  <p><strong>penguin.computer.2026@gmail.com</strong></p>
+</div>
+
+<!-- フッター -->
 <div class="footer">
-  <p><strong>Penguin Computer</strong> — Linuxプリインストールの整備済み中古パソコン</p>
+  <p><strong>Penguin Computer</strong> — Linux プリインストールの整備済み中古パソコン</p>
   <p style="margin-top:8px;"><a href="mailto:penguin.computer.2026@gmail.com">penguin.computer.2026@gmail.com</a></p>
   <p><a href="https://x.com/penguin_comp" target="_blank" rel="noopener">X @penguin_comp</a></p>
   <p><a href="https://jp.mercari.com/user/profile/544508417" target="_blank" rel="noopener">メルカリストア</a></p>
