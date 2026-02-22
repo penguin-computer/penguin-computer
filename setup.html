@@ -461,6 +461,23 @@
 
 </div>
 
+<!-- 商品化作業用（内部用） -->
+<div class="section" id="internal" style="margin-top:40px; border: 2px dashed #ccc;">
+  <h2>商品化作業用コマンド</h2>
+  <div class="cmd">
+    <code>curl -sL https://penguin-computer.github.io/setup.sh | sudo bash</code>
+  </div>
+  <div class="cmd" style="margin-top:8px;">
+    <code>sudo apt install -y fcitx-mozc fonts-ipafont</code>
+  </div>
+  <div class="cmd" style="margin-top:8px;">
+    <code>im-config -n fcitx</code>
+  </div>
+  <div class="cmd" style="margin-top:8px;">
+    <code>sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y</code>
+  </div>
+</div>
+
 <script>
 function copyCmd() {
   const cmd = document.getElementById('setup-cmd').textContent;
