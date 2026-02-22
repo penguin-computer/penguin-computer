@@ -75,6 +75,7 @@
     <li><a href="#japanese">日本語入力を設定する</a></li>
     <li><a href="#update">システムをアップデートする</a></li>
     <li><a href="#firewall">ファイアウォールを有効にする</a></li>
+    <li><a href="#battery">バッテリー状態を確認する（ノートPC）</a></li>
     <li><a href="#trouble">困ったときは</a></li>
   </ol>
 </div>
@@ -536,10 +537,40 @@
 <hr class="divider">
 
 <!-- ========================================== -->
-<!-- パート7: 困ったときは -->
+<!-- パート7: バッテリー状態確認 -->
+<!-- ========================================== -->
+<div class="section" id="battery">
+  <h2>7. バッテリー状態を確認する（ノートPC）</h2>
+  <p>ノートパソコンをお使いの場合、バッテリーの劣化具合を確認できます。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">1</span><h2>バッテリー情報を表示する</h2>
+  <p>ターミナルで以下のコマンドを実行します。</p>
+  <div class="cmd">
+    <button class="copy-btn" onclick="copyText(this)">コピー</button>
+    <code>upower -i /org/freedesktop/UPower/devices/battery_BAT0</code>
+  </div>
+  <p style="margin-top:12px;">表示される項目のうち、特に重要なのは以下の3つです:</p>
+  <ul>
+    <li><strong>energy-full</strong>: 現在の満充電容量（Wh）</li>
+    <li><strong>energy-full-design</strong>: 設計時の満充電容量（Wh）</li>
+    <li><strong>capacity</strong>: バッテリー健康度（%）— 80% 以上なら良好です</li>
+  </ul>
+  <div class="tip">
+    <strong>🐧 バッテリーの目安</strong><br>
+    capacity が 80% 以上であれば十分実用的です。<br>
+    50% を下回っている場合は、電源アダプターを常時接続してのご利用をおすすめします。
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ========================================== -->
+<!-- パート8: 困ったときは -->
 <!-- ========================================== -->
 <div class="section" id="trouble">
-  <h2>7. 困ったときは</h2>
+  <h2>8. 困ったときは</h2>
 
   <h3>USB メモリから起動できない</h3>
   <ul>
