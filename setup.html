@@ -72,6 +72,9 @@
     <li><a href="#boot">USB メモリからパソコンを起動する</a></li>
     <li><a href="#install">Linux Mint Xfce をインストールする</a></li>
     <li><a href="#zram">zram チューニングで高速化する</a></li>
+    <li><a href="#japanese">日本語入力を設定する</a></li>
+    <li><a href="#update">システムをアップデートする</a></li>
+    <li><a href="#firewall">ファイアウォールを有効にする</a></li>
     <li><a href="#trouble">困ったときは</a></li>
   </ol>
 </div>
@@ -421,10 +424,122 @@
 <hr class="divider">
 
 <!-- ========================================== -->
-<!-- パート4: 困ったときは -->
+<!-- パート4: 日本語入力の設定 -->
+<!-- ========================================== -->
+<div class="section" id="japanese">
+  <h2>4. 日本語入力を設定する</h2>
+  <p>Linux Mint Xfce をインストールした直後は、日本語の表示はできますが、日本語の入力（ローマ字変換）ができない場合があります。<br>
+  以下の手順で日本語入力を設定しましょう。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">1</span><h2>日本語入力ソフトをインストールする</h2>
+  <p>ターミナルを開いて（<span class="key">Ctrl</span> + <span class="key">Alt</span> + <span class="key">T</span>）、以下のコマンドを実行します。</p>
+  <div class="cmd">
+    <button class="copy-btn" onclick="copyText(this)">コピー</button>
+    <code>sudo apt install -y fcitx-mozc fonts-ipafont</code>
+  </div>
+  <p style="margin-top:12px;">これにより以下がインストールされます:</p>
+  <ul>
+    <li><strong>fcitx-mozc</strong>: Google 日本語入力と同じ変換エンジンを使った日本語入力ソフト</li>
+    <li><strong>fonts-ipafont</strong>: きれいな日本語フォント（IPA フォント）</li>
+  </ul>
+</div>
+
+<div class="section">
+  <span class="step-num">2</span><h2>入力方式を設定する</h2>
+  <p>続けて以下のコマンドを実行します。</p>
+  <div class="cmd">
+    <button class="copy-btn" onclick="copyText(this)">コピー</button>
+    <code>im-config</code>
+  </div>
+  <p style="margin-top:12px;">設定画面が表示されます。「OK」→「Yes」→ 一覧から <strong>「fcitx」</strong> を選んで「OK」→「OK」の順に進めてください。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">3</span><h2>再起動する</h2>
+  <p>設定を反映するために、パソコンを再起動してください。</p>
+  <div class="cmd">
+    <button class="copy-btn" onclick="copyText(this)">コピー</button>
+    <code>sudo reboot</code>
+  </div>
+  <div class="tip">
+    <strong>🐧 日本語入力の切り替え</strong><br>
+    再起動後、<span class="key">半角/全角</span> キーまたは <span class="key">Ctrl</span> + <span class="key">Space</span> で日本語入力のオン・オフを切り替えられます。
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ========================================== -->
+<!-- パート5: システムアップデート -->
+<!-- ========================================== -->
+<div class="section" id="update">
+  <h2>5. システムをアップデートする</h2>
+  <p>インストール直後は、セキュリティパッチやソフトウェアの更新が溜まっていることがあります。<br>
+  以下のコマンドで最新の状態にアップデートしましょう。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">1</span><h2>アップデートコマンドを実行する</h2>
+  <p>ターミナルを開いて、以下のコマンドを実行します。<br>
+  インターネット接続と処理に数分〜十数分かかります。</p>
+  <div class="cmd">
+    <button class="copy-btn" onclick="copyText(this)">コピー</button>
+    <code>sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y</code>
+  </div>
+  <p style="margin-top:12px;">途中で確認画面が出た場合は、そのまま <span class="key">Enter</span> を押してください。</p>
+  <div class="tip">
+    <strong>🐧 定期的にアップデートしましょう</strong><br>
+    セキュリティを保つため、月に1〜2回はこのコマンドを実行することをおすすめします。<br>
+    画面右下のシールドアイコンに通知が表示されることもあります。
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ========================================== -->
+<!-- パート6: ファイアウォール -->
+<!-- ========================================== -->
+<div class="section" id="firewall">
+  <h2>6. ファイアウォールを有効にする</h2>
+  <p>Linux Mint にはファイアウォール（UFW）が最初から入っていますが、初期状態では無効になっています。<br>
+  有効にすることで、外部からの不要なアクセスをブロックできます。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">1</span><h2>ファイアウォールを有効にする</h2>
+  <p>ターミナルで以下のコマンドを実行します。</p>
+  <div class="cmd">
+    <button class="copy-btn" onclick="copyText(this)">コピー</button>
+    <code>sudo ufw enable</code>
+  </div>
+  <p style="margin-top:12px;">「Firewall is active and enabled on system startup」と表示されれば完了です。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">2</span><h2>状態を確認する（任意）</h2>
+  <p>正しく有効になっているか確認したい場合は、以下のコマンドを実行します。</p>
+  <div class="cmd">
+    <button class="copy-btn" onclick="copyText(this)">コピー</button>
+    <code>sudo ufw status</code>
+  </div>
+  <p style="margin-top:12px;">「Status: active」と表示されていれば OK です。</p>
+  <div class="tip">
+    <strong>🐧 ファイアウォールについて</strong><br>
+    初期設定で外部からのアクセスはすべてブロックされます。<br>
+    Web 閲覧やメールなど、ふだんの使い方に影響はありません。<br>
+    ウイルス対策ソフトは不要です（Linux はその仕組み上、Windows のようなウイルス感染はほとんど起きません）。
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ========================================== -->
+<!-- パート7: 困ったときは -->
 <!-- ========================================== -->
 <div class="section" id="trouble">
-  <h2>4. 困ったときは</h2>
+  <h2>7. 困ったときは</h2>
 
   <h3>USB メモリから起動できない</h3>
   <ul>
@@ -461,28 +576,18 @@
 
 </div>
 
-<!-- 商品化作業用（内部用） -->
-<div class="section" id="internal" style="margin-top:40px; border: 2px dashed #ccc;">
-  <h2>商品化作業用コマンド</h2>
-  <div class="cmd">
-    <code>curl -sL https://penguin-computer.github.io/setup.sh | sudo bash</code>
-  </div>
-  <div class="cmd" style="margin-top:8px;">
-    <code>sudo apt install -y fcitx-mozc fonts-ipafont</code>
-  </div>
-  <div class="cmd" style="margin-top:8px;">
-    <code>im-config -n fcitx</code>
-  </div>
-  <div class="cmd" style="margin-top:8px;">
-    <code>sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y</code>
-  </div>
-</div>
-
 <script>
 function copyCmd() {
   const cmd = document.getElementById('setup-cmd').textContent;
   navigator.clipboard.writeText(cmd).then(() => {
-    const btn = document.querySelector('.copy-btn');
+    const btn = document.querySelector('#setup-cmd').parentElement.querySelector('.copy-btn');
+    btn.textContent = 'コピー済み✓';
+    setTimeout(() => { btn.textContent = 'コピー'; }, 2000);
+  });
+}
+function copyText(btn) {
+  const code = btn.parentElement.querySelector('code').textContent;
+  navigator.clipboard.writeText(code).then(() => {
     btn.textContent = 'コピー済み✓';
     setTimeout(() => { btn.textContent = 'コピー'; }, 2000);
   });
