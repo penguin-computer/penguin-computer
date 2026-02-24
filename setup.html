@@ -571,11 +571,26 @@
 </div>
 
 <div class="section">
-  <span class="step-num">1</span><h2>バッテリー情報を表示する</h2>
-  <p>ターミナルで以下のコマンドを実行します。</p>
+  <span class="step-num">1</span><h2>バッテリーのデバイス名を確認する</h2>
+  <p>バッテリーのデバイス名はパソコンによって異なります。まず以下のコマンドで確認します。</p>
   <div class="cmd">
     <button class="copy-btn" onclick="copyText(this)">コピー</button>
-    <code>upower -i /org/freedesktop/UPower/devices/battery_BAT0</code>
+    <code>upower -e</code>
+  </div>
+  <p style="margin-top:12px;">表示された一覧の中から <strong>「battery」を含む行</strong> を探してください。例:</p>
+  <ul>
+    <li><code>/org/freedesktop/UPower/devices/battery_BAT0</code></li>
+    <li><code>/org/freedesktop/UPower/devices/battery_CMB1</code></li>
+  </ul>
+  <p>この行がバッテリーのデバイス名です。次のステップで使います。</p>
+</div>
+
+<div class="section">
+  <span class="step-num">2</span><h2>バッテリー情報を表示する</h2>
+  <p>ステップ1で確認したデバイス名を使って、以下のコマンドを実行します。</p>
+  <div class="cmd">
+    <button class="copy-btn" onclick="copyText(this)">コピー</button>
+    <code>upower -i $(upower -e | grep battery)</code>
   </div>
   <p style="margin-top:12px;">表示される項目のうち、特に重要なのは以下の3つです:</p>
   <ul>
