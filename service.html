@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux セットアップ訪問サービス — Penguin Computer</title>
+<meta name="description" content="パソコンの買い替え、ちょっと待ってください。今あるパソコンに Linux をインストールすれば、まだまだ使えます。東京都江東区 湾岸エリアに自転車で駆けつけます。">
+<!-- OGP -->
+<meta property="og:title" content="Linux セットアップ訪問サービス — Penguin Computer">
+<meta property="og:description" content="パソコンの買い替え、ちょっと待ってください。今あるパソコンを Linux で再活用。江東区 湾岸エリアに訪問対応。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://penguin-computer.github.io/service.html">
+<meta property="og:site_name" content="Penguin Computer">
+<meta property="og:locale" content="ja_JP">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@penguin_comp">
+<meta name="twitter:title" content="Linux セットアップ訪問サービス — Penguin Computer">
+<meta name="twitter:description" content="パソコンの買い替え、ちょっと待ってください。今あるパソコンを Linux で再活用。江東区 湾岸エリアに訪問対応。">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif; background: #f5f7fa; color: #333; line-height: 1.8; }
+  .container { max-width: 700px; margin: 0 auto; padding: 24px 16px; }
+  h1 { font-size: 1.4em; margin-bottom: 8px; }
+  h2 { font-size: 1.15em; margin-bottom: 8px; color: #2d6a4f; }
+  h3 { font-size: 1.05em; margin-bottom: 6px; color: #2d6a4f; }
+  .brand { color: #2d6a4f; }
+  a { color: #2d6a4f; }
+  .nav { text-align: center; margin-bottom: 20px; font-size: 0.9em; }
+  .nav a { margin: 0 8px; }
+  .section { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .section p { font-size: 0.95em; margin-bottom: 8px; }
+  .section p:last-child { margin-bottom: 0; }
+  .section ul, .section ol { padding-left: 24px; font-size: 0.95em; margin-bottom: 8px; }
+  .section li { margin-bottom: 6px; }
+  .hero { background: #e8f5e9; border: 2px solid #2d6a4f; border-radius: 12px; padding: 24px; margin-bottom: 16px; text-align: center; }
+  .hero h1 { color: #2d6a4f; margin-bottom: 12px; }
+  .hero p { font-size: 0.95em; }
+  .price-box { background: #2d6a4f; color: #fff; border-radius: 12px; padding: 24px; margin-bottom: 16px; text-align: center; }
+  .price-box .price { font-size: 2em; font-weight: bold; }
+  .price-box .unit { font-size: 0.9em; }
+  .price-box .note { font-size: 0.85em; margin-top: 8px; opacity: 0.9; }
+  .app-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.93em; }
+  .app-table th, .app-table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #e0e0e0; }
+  .app-table th { background: #f0f7f4; color: #2d6a4f; font-weight: bold; }
+  .warn { background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 12px; font-size: 0.9em; }
+  .tip { background: #e8f5e9; border-left: 4px solid #2d6a4f; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 12px; font-size: 0.9em; }
+  .flow { counter-reset: flow-step; }
+  .flow-step { display: flex; align-items: flex-start; margin-bottom: 16px; }
+  .flow-step::before { counter-increment: flow-step; content: counter(flow-step); display: inline-flex; align-items: center; justify-content: center; background: #2d6a4f; color: #fff; width: 32px; height: 32px; border-radius: 50%; font-weight: bold; font-size: 0.9em; flex-shrink: 0; margin-right: 12px; margin-top: 2px; }
+  .flow-step-content { flex: 1; }
+  .flow-step-content strong { display: block; margin-bottom: 2px; }
+  .flow-step-content p { font-size: 0.93em; margin: 0; }
+  .cta { display: inline-block; background: #2d6a4f; color: #fff; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1em; }
+  .cta:hover { background: #40916c; }
+  .divider { border: none; border-top: 1px solid #e0e0e0; margin: 24px 0; }
+  .footer { text-align: center; margin-top: 32px; font-size: 0.8em; color: #999; }
+  .footer p { margin-bottom: 2px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="nav">
+  <a href="index.html">home</a> | <a href="setup.html">guide</a> | <a href="campaign.html">present</a> | <a href="service.html"><strong>service</strong></a>
+</div>
+
+<!-- ========================================== -->
+<!-- ヒーロー -->
+<!-- ========================================== -->
+<div class="hero">
+  <h1>🐧 Linux セットアップ訪問サービス</h1>
+  <p style="font-size: 1.05em; font-weight: bold;">パソコンの買い替え、ちょっと待ってください。</p>
+  <p>今あるパソコンに Linux をインストールすれば、まだまだ使えます。<br>
+  お手元のパソコンをお預かりせず、<strong>その場でセットアップ</strong>いたします。</p>
+  <p style="margin-top: 12px; font-size: 0.9em; color: #555;">東京都江東区 湾岸エリア（東雲・豊洲・辰巳・有明）に対応</p>
+</div>
+
+<!-- ========================================== -->
+<!-- お悩み -->
+<!-- ========================================== -->
+<div class="section">
+  <h2>今、パソコンが高い</h2>
+  <p>半導体価格の高騰により、パソコン本体もメモリも値上がりが続いています。</p>
+  <ul>
+    <li>新しいパソコンに買い替える予算がない</li>
+    <li>メモリの増設も高くて手が出ない</li>
+    <li>Windows 10 のサポートが終わったが、Windows 11 にはアップグレードできない</li>
+    <li>まだ動くパソコンを捨てるのはもったいない</li>
+  </ul>
+  <p><strong>お金をかけずに、今あるパソコンを活かす方法があります。</strong></p>
+</div>
+
+<!-- ========================================== -->
+<!-- フック: 無料貸し出し -->
+<!-- ========================================== -->
+<div class="section" style="background: #e8f5e9; border: 2px solid #2d6a4f;">
+  <h2>Linux パソコン無料貸し出し</h2>
+  <p>「Linux って何？」「本当に使えるの？」という方に、<strong>用途に応じたパソコンを2週間無料でお貸し出し</strong>します。</p>
+  <p>ふだんお使いのパソコンと並べて、実際の操作感を確認してみてください。</p>
+  <ul>
+    <li><strong>貸出期間:</strong> 2週間</li>
+    <li><strong>貸出料:</strong> 無料</li>
+    <li><strong>配送:</strong> 往復の配送料金はお客さまご負担となります</li>
+  </ul>
+  <p style="font-size: 0.9em; color: #555; margin-top: 8px;">貸し出しはサービスお申し込みが前提ではありません。お気軽にお問合わせください。</p>
+  <p style="margin-top: 12px; text-align: center;">
+    <a href="mailto:penguin.computer.2026@gmail.com" class="cta" style="font-size: 0.95em; padding: 10px 28px;">無料貸し出しを申し込む</a>
+  </p>
+</div>
+
+<!-- ========================================== -->
+<!-- Linux とは（Windows/Mac との違い） -->
+<!-- ========================================== -->
+<div class="section">
+  <h2>Linux とは — Windows や Mac の代わりになる OS</h2>
+  <p>パソコンを動かすには OS（オペレーティングシステム）が必要です。Windows や macOS と同じように、<strong>Linux（リナックス）</strong>もパソコンを動かす OS のひとつです。</p>
+  <p>大きな違いは、Linux は<strong>無償で使える</strong>こと。そしてWindows よりも<strong>動作が軽い</strong>ため、古いパソコンでも快適に動きます。</p>
+
+  <h3 style="margin-top: 16px;">Windows と Linux の違い</h3>
+  <table class="app-table">
+    <tr><th></th><th>Windows</th><th>Linux</th></tr>
+    <tr><td>費用</td><td>有償（PC価格に含まれている）</td><td><strong>無償</strong></td></tr>
+    <tr><td>動作の軽さ</td><td>年々重くなる</td><td><strong>古いPCでも軽快</strong></td></tr>
+    <tr><td>ウイルス</td><td>対策ソフトが必要</td><td><strong>ほぼ不要</strong></td></tr>
+    <tr><td>サポート期限</td><td>あり（Win10は終了済）</td><td><strong>長期サポート版あり</strong></td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>🐧 世界中で使われています</strong><br>
+    Linux はサーバー、スマートフォン（Android）、家電、自動車など、身の回りの多くの機器で使われています。パソコン用としても世界中で利用されており、信頼性の高い OS です。
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- Linux でできること -->
+<!-- ========================================== -->
+<div class="section">
+  <h2>今やっていることが、そのままできます</h2>
+  <p>Linux をインストールした直後から、以下のことがすぐにできます。</p>
+
+  <table class="app-table">
+    <tr><th>やりたいこと</th><th>Windows では</th><th>Linux のアプリ</th></tr>
+    <tr><td>インターネット</td><td>Edge / Chrome</td><td>Firefox</td></tr>
+    <tr><td>メール</td><td>Outlook</td><td>Thunderbird</td></tr>
+    <tr><td>文書作成</td><td>Word</td><td>LibreOffice Writer</td></tr>
+    <tr><td>表計算</td><td>Excel</td><td>LibreOffice Calc</td></tr>
+    <tr><td>プレゼン資料</td><td>PowerPoint</td><td>LibreOffice Impress</td></tr>
+    <tr><td>写真の閲覧・整理</td><td>フォト</td><td>標準搭載</td></tr>
+    <tr><td>動画の再生</td><td>メディアプレーヤー</td><td>標準搭載</td></tr>
+  </table>
+
+  <p style="font-size: 0.88em; color: #666; margin-top: 8px;">Word・Excel・PowerPoint のファイルも読み書きできます。完全互換ではありませんが、実用上問題ないレベルです。</p>
+</div>
+
+<!-- ========================================== -->
+<!-- Linux Mint について -->
+<!-- ========================================== -->
+<div class="section">
+  <h2>インストールする Linux の種類</h2>
+  <p>Linux には Ubuntu、Linux Mint など、さまざまな種類（ディストリビューション）があります。パソコンのスペックやご利用目的に合わせて最適なものを選定・ご提案します。</p>
+  <p>当サービスでは、<strong>Linux Mint Xfce</strong> を標準としておすすめしています。Windows に最も近い操作画面を持ち、画面左下のメニューボタンからアプリを起動する — Windows と同じ感覚で使えます。動作も軽く、メモリ 4GB のパソコンでも快適です。</p>
+</div>
+
+<hr class="divider">
+
+<!-- ========================================== -->
+<!-- サービス内容（価格は見出しに入れない） -->
+<!-- ========================================== -->
+<div class="section">
+  <h2>サービス内容</h2>
+  <p>お客様のもとに直接お伺いし、その場で作業を行います。</p>
+
+  <h3 style="margin-top: 16px;">Linux セットアップ</h3>
+  <ol>
+    <li><strong>パソコンの状態確認</strong> — 動作確認・ハードウェアチェック</li>
+    <li><strong>Linux Mint のインストール</strong> — OS のセットアップ</li>
+    <li><strong>日本語環境の設定</strong> — 日本語入力・フォント</li>
+    <li><strong>メモリの最適化</strong> — 専用チューニングにより、メモリ 4GB でも快適に動作するよう調整します</li>
+    <li><strong>基本操作のご案内</strong> — 目の前で動作確認しながらご説明します</li>
+  </ol>
+
+  <h3 style="margin-top: 16px;">内部クリーニング（オプション）</h3>
+  <p>ご希望の方には、セットアップと同時にパソコン内部のメンテナンスも行います。</p>
+  <ul>
+    <li><strong>ホコリの除去</strong> — 内部に溜まったホコリをエアダスターで除去</li>
+    <li><strong>ファンの清掃</strong> — 冷却ファンの汚れを取り除き、排熱効率を改善</li>
+    <li><strong>CPUグリスの再塗布</strong> — 劣化したグリスを交換し、CPU温度を低下</li>
+  </ul>
+
+  <h3 style="margin-top: 16px;">SSD 換装（オプション）</h3>
+  <p>ハードディスク（HDD）搭載のパソコンを SSD に交換することで、起動やアプリの動作が大幅に速くなります。</p>
+  <ul>
+    <li><strong>SATA SSD 120GB</strong> — SSD 本体＋マウント＋取り付け作業込み</li>
+    <li>元の HDD はお返しします</li>
+  </ul>
+
+  <p style="margin-top: 12px; font-size: 0.9em; color: #666;">所要時間の目安: セットアップのみ 約60分 / クリーニング込み 約90分 / SSD 換装追加 +約30分</p>
+</div>
+
+<!-- ========================================== -->
+<!-- 対応エリア -->
+<!-- ========================================== -->
+<div class="section">
+  <h2>対応エリア</h2>
+  <p>東京都江東区の湾岸エリアに自転車でお伺いします。</p>
+  <ul>
+    <li><strong>東雲</strong>・<strong>豊洲</strong>・<strong>辰巳</strong>・<strong>有明</strong>（出張費込み）</li>
+  </ul>
+  <p style="font-size: 0.9em; color: #666;">上記以外の江東区内・近隣エリアについてはご相談ください。</p>
+</div>
+
+<!-- ========================================== -->
+<!-- 対象 -->
+<!-- ========================================== -->
+<div class="section">
+  <h2>対象のお客様</h2>
+  <ul>
+    <li>個人のお客様（ご家庭のパソコン）</li>
+    <li>SOHO・フリーランスの方</li>
+    <li>小規模オフィス・商店のパソコン</li>
+    <li>複数台の一括セットアップも承ります</li>
+  </ul>
+
+  <h3 style="margin-top: 16px;">対象パソコン</h3>
+  <ul>
+    <li>メモリ <strong>4GB 以上</strong>のデスクトップまたはノートパソコン</li>
+    <li>Windows XP / Vista / 7 / 8 / 10 がインストールされているもの</li>
+    <li>Windows 11 のシステム要件を満たさないパソコンも対応</li>
+  </ul>
+
+  <div class="warn">
+    <strong>⚡ 重要: データの消去について</strong><br>
+    セットアップにあたり、パソコン内のデータはすべて消去されます。<br>
+    必要なデータは<strong>事前にバックアップ</strong>をお願いします。<br>
+    本サービスに起因するいかなるデータの消失についても責任を負いかねます。
+  </div>
+
+  <h3 style="margin-top: 16px;">ご注意事項</h3>
+  <ul>
+    <li>Windows との共存（デュアルブート）には対応しておりません</li>
+    <li>セットアップに失敗した場合、料金は発生しません</li>
+    <li>セットアップに失敗した場合でも、既存データは削除されている可能性があります</li>
+    <li>一部のハードウェア（Wi-Fi アダプター等）が Linux に対応していない場合があります</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- ご利用の流れ -->
+<!-- ========================================== -->
+<div class="section">
+  <h2>ご利用の流れ</h2>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <strong>お問い合わせ</strong>
+        <p>メールでパソコンの機種名・台数・ご希望日時をお知らせください。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <strong>事前確認</strong>
+        <p>パソコンのスペック（メモリ・CPU）を確認し、対応可否をご連絡します。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <strong>訪問・作業</strong>
+        <p>ご指定の日時にお伺いし、その場でセットアップ作業を行います。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <strong>動作確認・操作案内</strong>
+        <p>お客様の目の前で動作を確認し、基本操作をご案内します。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <strong>お支払い</strong>
+        <p>作業完了後のお支払いです。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ========================================== -->
+<!-- サービス提供者（1行） -->
+<!-- ========================================== -->
+<div class="section">
+  <h2>サービス提供者</h2>
+  <p>ペンギンコンピュータは、東京都江東区東雲在住の個人（ドスパラ、Yahoo! Japan、マイクロソフトでの勤務経験あり）が運営しています。</p>
+  <div class="tip">
+    <strong>🐧 地元だからできること</strong><br>
+    同じ湾岸エリアに住んでいるので、ちょっとしたご相談にもすぐ対応できます。<br>
+    自転車で駆けつけられる距離だからこそ、出張費を抑えたサービスが実現しています。
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- アフターサポート -->
+<!-- ========================================== -->
+<div class="section">
+  <h2>アフターサポート</h2>
+  <p>セットアップ後のご質問・お困りごとにもメールで対応いたします。</p>
+  <ul>
+    <li>操作方法のご質問</li>
+    <li>アプリケーションの追加方法</li>
+    <li>システムアップデートの方法</li>
+    <li>トラブル時の相談</li>
+  </ul>
+  <p style="font-size: 0.9em; color: #666;">近くにいますので、お困りの際はお気軽にご連絡ください。</p>
+</div>
+
+<hr class="divider">
+
+<!-- ========================================== -->
+<!-- 料金（最後に提示） -->
+<!-- ========================================== -->
+<div class="section">
+  <h2>料金</h2>
+  <p>出張費込み（東雲・豊洲・辰巳・有明エリア）。作業完了後のお支払いです。</p>
+</div>
+
+<div class="price-box">
+  <p class="unit">Linux セットアップ — 1台</p>
+  <p class="price">¥6,600<span style="font-size: 0.4em; font-weight: normal;">（税込）</span></p>
+  <p class="note">Linux Mint インストール + メモリ最適化 + 日本語設定 + 基本操作案内</p>
+</div>
+
+<div class="price-box" style="border: 3px solid #fff; position: relative;">
+  <p style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #ff6b35; color: #fff; padding: 2px 16px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">おすすめ</p>
+  <p class="unit">セットアップ + クリーニング — 1台</p>
+  <p class="price">¥9,900<span style="font-size: 0.4em; font-weight: normal;">（税込）</span></p>
+  <p class="note">上記に加えて、内部クリーニング（ホコリ除去・ファン清掃・CPUグリス再塗布）</p>
+</div>
+
+<div class="section" style="font-size: 0.93em;">
+  <p><strong>オプション:</strong></p>
+  <ul>
+    <li>SSD 換装（120GB SSD + マウント + 取り付け）: <strong>+¥5,500</strong></li>
+  </ul>
+  <p style="margin-top: 12px;"><strong>2台目以降の割引:</strong></p>
+  <ul>
+    <li>セットアップのみ: <strong>¥5,500</strong>/台</li>
+    <li>セットアップ + クリーニング: <strong>¥8,800</strong>/台</li>
+  </ul>
+  <p style="font-size: 0.88em; color: #666; margin-top: 8px;">セットアップに失敗した場合は料金をいただきません。</p>
+</div>
+
+<!-- ========================================== -->
+<!-- CTA -->
+<!-- ========================================== -->
+<div class="section" style="text-align: center;">
+  <h2>お問い合わせ・無料貸し出し申込み</h2>
+  <p>ご相談・お見積り・無料貸し出しのお申込みはメールでお気軽にどうぞ。</p>
+  <p style="margin-top: 16px;">
+    <a href="mailto:penguin.computer.2026@gmail.com" class="cta">メールで問い合わせる</a>
+  </p>
+  <p style="margin-top: 12px; font-size: 0.9em; color: #666;">penguin.computer.2026@gmail.com</p>
+  <p style="font-size: 0.88em; color: #666; margin-top: 8px;">パソコンの機種名・台数・ご希望日時をお知らせください。<br>通常1営業日以内にご返信いたします。</p>
+</div>
+
+<!-- ========================================== -->
+<!-- 整備済みパソコン販売の案内 -->
+<!-- ========================================== -->
+<div class="section" style="background: #f0f7f4;">
+  <h2>整備済み Linux パソコンも販売中</h2>
+  <p>お手元にパソコンがない方には、内部クリーニング＋SSD交換＋Linux セットアップ済みの整備済み中古パソコンをお届けしています。</p>
+  <p style="margin-top: 12px; text-align: center;">
+    <a href="https://jp.mercari.com/user/profile/544508417" target="_blank" rel="noopener" class="cta" style="font-size: 0.95em; padding: 10px 28px;">メルカリストアを見る</a>
+  </p>
+</div>
+
+<!-- フッター -->
+<div class="footer">
+  <p><strong>Penguin Computer</strong></p>
+  <p>Linuxプリインストールの整備済み中古パソコン</p>
+  <p style="margin-top:8px;"><a href="mailto:penguin.computer.2026@gmail.com">penguin.computer.2026@gmail.com</a></p>
+  <p><a href="https://x.com/penguin_comp" target="_blank" rel="noopener">X @penguin_comp</a></p>
+  <p><a href="https://jp.mercari.com/user/profile/544508417" target="_blank" rel="noopener">メルカリストア</a></p>
+  <p><a href="campaign.html">プレゼントキャンペーン実施中</a></p>
+</div>
+
+</div>
+</body>
+</html>
